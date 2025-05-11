@@ -6,8 +6,7 @@ using namespace std;
 
 int main()
 {
-	/*Stack A,B,C;
-
+	Stack A, B, C;
 	int N;
 
 	for (int i = 0; i < 10; i++)
@@ -17,6 +16,8 @@ int main()
 
 	cout << "A: ";
 	A.view();
+
+	cout << "top : " << A.top() << endl;
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -39,7 +40,6 @@ int main()
 	C.view();
 
 	B.pop();
-
 	C.push(-1);
 
 	cout << "B: ";
@@ -47,56 +47,32 @@ int main()
 	cout << "C: ";
 	C.view();
 
-	B.push(C);
-
-	cout << "B: ";
-	B.view();*/
-
-	//----------------------------------
-
-	Queue A,B,C;
-
-	int N;
-
-	for (int i = 0; i < 10; i++)
+	while (!B.empty() || !C.empty())
 	{
-		A.enque(i);
+		if (B.empty())
+		{
+			N = C.top();
+			C.pop();
+		}
+		else if (C.empty())
+		{
+			N = B.top();
+			B.pop();
+		}
+		else if (B.top() > C.top())
+		{
+			N = C.top();
+			C.pop();
+		}
+		else
+		{
+			N = B.top();
+			B.pop();
+		}
+
+		A.push(N);
 	}
 
 	cout << "A: ";
 	A.view();
-
-	for (int i = 0; i < 10; i++)
-	{
-		N = A.first();
-		A.deque();
-
-		if (N % 2 == 0)
-		{
-			B.enque(N);
-		}
-		else
-		{
-			C.enque(N);
-		}
-	}
-
-	cout << "B: ";
-	B.view();
-	cout << "C: ";
-	C.view();
-
-	B.enque(12);
-	C.deque();
-
-	cout << "B: ";
-	B.view();
-	cout << "C: ";
-	C.view();
-
-	B.enque(C);
-	
-	cout << "B: ";
-	B.view();
-
 }

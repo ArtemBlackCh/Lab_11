@@ -14,7 +14,7 @@ Queue::~Queue()
 
 void Queue::enque(int x)
 {
-	if (Head == nullptr && Tail == nullptr)
+	if (Head == nullptr)
 	{
 		Tail = Tail->enque(Tail, x);
 		Head = Tail;

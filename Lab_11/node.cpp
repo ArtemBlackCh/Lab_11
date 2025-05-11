@@ -81,14 +81,14 @@ void Node::view(Node* T)
 
 bool Node::empty(Node* T)
 {
-	return T;
+	return !T;
 }
 
 Node* Node::clear(Node* T)
 {
 	while (T)
 	{
-		T = T->deque(T);
+		T = T->pop(T);
 	}
 
 	return nullptr;
